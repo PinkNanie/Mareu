@@ -33,7 +33,6 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
     public MyMeetingRecyclerViewAdapter.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_meeting, parent, false);
-
         return new ViewHolder(view);
 
     }
@@ -42,7 +41,7 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
     public void onBindViewHolder(MyMeetingRecyclerViewAdapter.ViewHolder holder, int position) {
 
         Meeting meeting = mMeetings.get(position);
-        holder.mMeetingName.setText(meeting.getLocation() + "-" + meeting.getHour() + "-" + meeting.getSubject() + meeting.getParticipants());
+        holder.mMeetingName.setText(meeting.getLocation() + "-" + meeting.getHour() + "-" + meeting.getSubject() + "\n" + meeting.getParticipants());
         Glide.with(holder.mCirclemeeting.getContext())
                 .load(R.drawable.ic_brightness_1_black_24dp)
                 .apply(RequestOptions.circleCropTransform())

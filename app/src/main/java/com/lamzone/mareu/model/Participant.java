@@ -15,4 +15,6 @@ public class Participant {
     public void setEmail(String email) {
         mEmail = email;
     }
+
+
 }
