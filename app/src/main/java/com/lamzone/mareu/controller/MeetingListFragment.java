@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lamzone.mareu.R;
 import com.lamzone.mareu.event.DeleteMeetingEvent;
 import com.lamzone.mareu.model.Meeting;
+import com.lamzone.mareu.service.DummyMeetingApiService;
 import com.lamzone.mareu.service.MeetingApiService;
 
 import org.greenrobot.eventbus.EventBus;
@@ -35,8 +36,8 @@ public class MeetingListFragment extends Fragment {
     RecyclerView mRecyclerView;
 
     private MeetingApiService mApiService;
-    private List <Meeting> mMeetings;
-    MyMeetingRecyclerViewAdapter mRecyclerViewAdapter;
+    private List<Meeting> mMeetings;
+
 
     public MeetingListFragment() {
         // Required empty public constructor
@@ -51,6 +52,7 @@ public class MeetingListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mApiService = DummyMeetingApiService.getInstance();
 
     }
 
@@ -63,6 +65,9 @@ public class MeetingListFragment extends Fragment {
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+
+
+
         return view;
     }
 
@@ -95,6 +100,7 @@ public class MeetingListFragment extends Fragment {
 
     /**
      * Fired if the user clicks on a delete button
+     *
      * @param event
      **/
 
@@ -103,7 +109,6 @@ public class MeetingListFragment extends Fragment {
         mApiService.deleteMeeting(event.meeting);
         initList();
     }
-
 
 
 }

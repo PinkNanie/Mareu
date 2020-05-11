@@ -20,10 +20,6 @@ public class ListMeetingActivity extends AppCompatActivity {
     Toolbar mToolbar;
 
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +28,6 @@ public class ListMeetingActivity extends AppCompatActivity {
 
 
         setSupportActionBar(mToolbar);
-
 
 
     }
