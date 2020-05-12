@@ -47,4 +47,6 @@ public class Meeting {
     public void setParticipants(List mParticipants) {
         this.mParticipants = mParticipants;
     }
+
+
 }
