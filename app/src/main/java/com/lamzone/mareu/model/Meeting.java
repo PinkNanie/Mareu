@@ -1,5 +1,8 @@
 package com.lamzone.mareu.model;
 
+
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 public class Meeting {
@@ -49,4 +52,13 @@ public class Meeting {
     }
 
 
+    @NonNull
+    @Override
+    public String toString() {
+        String result = mLocation + "-" +mHour + "-" + mSubject + "\n";
+        for(Participant participant: mParticipants){
+            result += participant.getEmail() + ", ";
+        }
+        return result.substring(0,result.length()-2);
+    }
 }

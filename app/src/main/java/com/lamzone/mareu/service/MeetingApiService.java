@@ -1,6 +1,7 @@
 package com.lamzone.mareu.service;
 
 import com.lamzone.mareu.model.Meeting;
+import com.lamzone.mareu.model.MeetingRoom;
 
 import java.util.List;
 
@@ -35,4 +36,7 @@ public interface MeetingApiService {
 
     void createMeeting (Meeting meeting);
 
+    List<Meeting> filterByMeetingRoom(String meetingRoom);
+
+    List<Meeting> filterByHour(String hour);
 }

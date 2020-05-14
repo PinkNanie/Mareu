@@ -1,10 +1,12 @@
 package com.lamzone.mareu.controller;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,18 +15,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.lamzone.mareu.R;
+import com.lamzone.mareu.event.DeleteMeetingEvent;
 import com.lamzone.mareu.model.Meeting;
 import com.lamzone.mareu.model.Participant;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingRecyclerViewAdapter.ViewHolder> {
 
     private final List<Meeting> mMeetings;
+    private Participant mParticipant;
 
 
     public MyMeetingRecyclerViewAdapter(List<Meeting> items) {
@@ -44,12 +51,18 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
     public void onBindViewHolder(MyMeetingRecyclerViewAdapter.ViewHolder holder, int position) {
 
         Meeting meeting = mMeetings.get(position);
-        holder.mMeetingName.setText(meeting.getLocation() + "-" + meeting.getHour() + "-" + meeting.getSubject() + "\n" + meeting.getParticipants().toString());
+        holder.mMeetingName.setText(meeting + "");
         Glide.with(holder.mCirclemeeting.getContext())
                 .load(getRandomColorDrawable())
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.mCirclemeeting);
 
+        holder.mDelete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new DeleteMeetingEvent(meeting));
+            }
+        });
 
     }
 
@@ -64,6 +77,8 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         public ImageView mCirclemeeting;
         @BindView(R.id.item_list_meetingName)
         public TextView mMeetingName;
+        @BindView(R.id.delete_btn)
+        public ImageButton mDelete_btn;
 
 
         public ViewHolder(View view) {

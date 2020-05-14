@@ -4,9 +4,28 @@
     tools:context="com.lamzone.mareu.controller.ListMeetingActivity">
 
     <item
-        android:id="@+id/action_filter_hour"
+        android:id="@+id/action_filter"
+        android:icon="@drawable/ic_filter_list_white_24dp"
         android:orderInCategory="100"
         android:title="@string/action_filter_hour"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_filter_list_white_24dp"/>
+        app:showAsAction="always">
+
+        <menu>
+
+            <item
+                android:id="@+id/filter_hour"
+                android:title=" Filtrer / Heures"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/filter_meetingRoom"
+                android:title="Filtrer / Lieux"
+                app:showAsAction="never" />
+
+        </menu>
+
+
+    </item>
+
+
 </menu>

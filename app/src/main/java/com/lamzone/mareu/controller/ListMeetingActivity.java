@@ -9,6 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.lamzone.mareu.R;
+import com.lamzone.mareu.model.Meeting;
+import com.lamzone.mareu.service.DummyMeetingApiService;
+import com.lamzone.mareu.service.DummyMeetingGenerator;
+import com.lamzone.mareu.service.MeetingApiService;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,13 +25,16 @@ public class ListMeetingActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
+    private MeetingApiService mApiService;
+    private List<Meeting> mMeetingList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_meeting);
         ButterKnife.bind(this);
-
+        mApiService = DummyMeetingApiService.getInstance();
+        mMeetingList = DummyMeetingGenerator.DUMMY_MEETING;
 
         setSupportActionBar(mToolbar);
 
@@ -41,17 +50,15 @@ public class ListMeetingActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_filter_hour) {
-            return true;
+        switch (item.getItemId()){
+            case R.id.filter_hour:
+                mApiService.filterByHour("");
+                return true;
+            case R.id.filter_meetingRoom:
+                mApiService.filterByMeetingRoom("");
+                return true;
+            default: return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @OnClick
@@ -60,5 +67,7 @@ public class ListMeetingActivity extends AppCompatActivity {
         Intent addMeetingActivity = new Intent(ListMeetingActivity.this, AddMeetingActivity.class);
         startActivity(addMeetingActivity);
     }
+
+
 
 }
