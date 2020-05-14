@@ -8,13 +8,13 @@ import java.util.List;
 public class Meeting {
 
     private String mHour;
-    private String mLocation;
+    private String mMeetingRoom;
     private String mSubject;
     private List<Participant> mParticipants;
 
-    public Meeting(String hour, String location, String subject, List<Participant> participants) {
+    public Meeting(String hour, String meetingRoom, String subject, List<Participant> participants) {
         this.mHour = hour;
-        this.mLocation = location;
+        this.mMeetingRoom = meetingRoom;
         this.mSubject = subject;
         this.mParticipants = participants;
     }
@@ -28,11 +28,11 @@ public class Meeting {
     }
 
     public String getLocation() {
-        return mLocation;
+        return mMeetingRoom;
     }
 
     public void setLocation(String mLocation) {
-        this.mLocation = mLocation;
+        this.mMeetingRoom = mLocation;
     }
 
     public String getSubject() {
@@ -55,7 +55,7 @@ public class Meeting {
     @NonNull
     @Override
     public String toString() {
-        String result = mLocation + "-" +mHour + "-" + mSubject + "\n";
+        String result = mMeetingRoom + "-" +mHour + "-" + mSubject + "\n";
         for(Participant participant: mParticipants){
             result += participant.getEmail() + ", ";
         }
