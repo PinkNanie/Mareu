@@ -26,7 +26,7 @@ public class ListMeetingActivity extends AppCompatActivity {
     Toolbar mToolbar;
 
     private MeetingApiService mApiService;
-    private List<Meeting> mMeetingList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class ListMeetingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_meeting);
         ButterKnife.bind(this);
         mApiService = DummyMeetingApiService.getInstance();
-        mMeetingList = DummyMeetingGenerator.DUMMY_MEETING;
+
 
         setSupportActionBar(mToolbar);
 
@@ -43,6 +43,7 @@ public class ListMeetingActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -50,14 +51,17 @@ public class ListMeetingActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+
+        switch (item.getItemId()) {
+
             case R.id.filter_hour:
-                mApiService.filterByHour("");
+                mApiService.filterByHour("hour");
                 return true;
             case R.id.filter_meetingRoom:
-                mApiService.filterByMeetingRoom("");
+                mApiService.filterByMeetingRoom("Location");
                 return true;
-            default: return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -67,7 +71,6 @@ public class ListMeetingActivity extends AppCompatActivity {
         Intent addMeetingActivity = new Intent(ListMeetingActivity.this, AddMeetingActivity.class);
         startActivity(addMeetingActivity);
     }
-
 
 
 }
