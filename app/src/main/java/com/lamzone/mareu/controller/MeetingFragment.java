@@ -35,6 +35,8 @@ public class MeetingFragment extends Fragment {
 
     @BindView(R.id.item_list_meeting)
     ImageView mImageView;
+
+
     /**
      * Create and return a new instance
      * @return @{@link MeetingFragment}
@@ -62,8 +64,6 @@ public class MeetingFragment extends Fragment {
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-
-
 
         return view;
     }

@@ -1,5 +1,6 @@
 package com.lamzone.mareu.controller;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -30,8 +31,7 @@ import butterknife.OnClick;
 
 public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Meeting> mMeetings;
-    private Participant mParticipant;
+    private  List<Meeting> mMeetings;
 
 
     public MyMeetingRecyclerViewAdapter(List<Meeting> items) {
@@ -102,5 +102,10 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         return randomColorList[idx];
     }
 
+    public void setMeeting(List<Meeting> meetings){
+        this.mMeetings = meetings;
+        notifyDataSetChanged();
+
+    }
 
 }
