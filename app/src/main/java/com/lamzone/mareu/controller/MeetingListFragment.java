@@ -66,8 +66,6 @@ public class MeetingListFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
-
-
         return view;
     }
 
@@ -79,7 +77,7 @@ public class MeetingListFragment extends Fragment {
         setMeetingList(mApiService.getMeeting());
     }
 
-    public void setMeetingList(List<Meeting> meetings){
+    public void setMeetingList(List<Meeting> meetings) {
         mMeetings = meetings;
         mRecyclerView.setAdapter(new MyMeetingRecyclerViewAdapter(mMeetings));
     }

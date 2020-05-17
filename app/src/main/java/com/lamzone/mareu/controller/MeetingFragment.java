@@ -39,6 +39,7 @@ public class MeetingFragment extends Fragment {
 
     /**
      * Create and return a new instance
+     *
      * @return @{@link MeetingFragment}
      */
     public static MeetingFragment newInstance() {
@@ -97,6 +98,7 @@ public class MeetingFragment extends Fragment {
 
     /**
      * Fired if the user clicks on a delete button
+     *
      * @param event
      **/
 

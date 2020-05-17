@@ -74,7 +74,6 @@ public class AddMeetingActivity extends AppCompatActivity implements TimePickerD
         });
 
 
-
         mSubject.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -91,8 +90,6 @@ public class AddMeetingActivity extends AppCompatActivity implements TimePickerD
                 mAddMeeting_btn.setEnabled(s.length() > 0);
             }
         });
-
-
     }
 
     public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
@@ -105,7 +102,7 @@ public class AddMeetingActivity extends AppCompatActivity implements TimePickerD
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-         mTime.setText(hourOfDay + "h"  + minute);
+        mTime.setText(hourOfDay + "h"  + minute);
     }
 
     @OnClick(R.id.add_Meeting)
@@ -113,7 +110,7 @@ public class AddMeetingActivity extends AppCompatActivity implements TimePickerD
         mParticipant = new Participant("");
         List<Participant> participantMeetingList = new ArrayList<>();
         String participants = mParticipants.getText().toString();
-        List<String> allParticipants = Arrays.asList(participants.split(","));
+        String[] allParticipants = participants.split(",");
         for (String string:allParticipants){
             Participant participant= new Participant(string);
             participantMeetingList.add(participant);
@@ -127,6 +124,4 @@ public class AddMeetingActivity extends AppCompatActivity implements TimePickerD
         mApiService.createMeeting(meeting);
         finish();
     }
-
-
 }

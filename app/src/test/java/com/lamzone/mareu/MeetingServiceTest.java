@@ -45,6 +45,17 @@ public class MeetingServiceTest {
     }
 
     @Test
+    public void filterByHourWithSuccess(){
+        List<Meeting> meetings = service.getMeeting();
+        meetings.clear();
+        meetings.add(new Meeting("14H0","","",null));
+        meetings.add(new Meeting("16H0","","",null));
+        List<Meeting> filteredHourMeeting = service.filterByHour("14H0");
+        assertTrue(filteredHourMeeting.size()==1);
+        assertTrue(filteredHourMeeting.get(0).getHour().equals("14H0"));
+    }
+
+    @Test
     public void filterByMeetingRoomWithSuccess() {
         List<Meeting> meetings = service.getMeeting();
         meetings.clear();
@@ -55,14 +66,5 @@ public class MeetingServiceTest {
         assertTrue(filteredMeetings.get(0).getLocation().equals("A"));
     }
 
-    @Test
-    public void filterByHourWithSuccess(){
-        List<Meeting> meetings = service.getMeeting();
-        meetings.clear();
-        meetings.add(new Meeting("14H00","","",null));
-        meetings.add(new Meeting("16H00","","",null));
-        List<Meeting> filteredHourMeeting = service.filterByHour("14H00");
-        assertTrue(filteredHourMeeting.size()==1);
-        assertTrue(filteredHourMeeting.get(0).getHour().equals("14H00"));
-    }
+
 }

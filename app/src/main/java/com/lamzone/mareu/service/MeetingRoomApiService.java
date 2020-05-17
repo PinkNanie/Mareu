@@ -13,13 +13,11 @@ public interface MeetingRoomApiService {
 
     List<MeetingRoom> getMeetingRoom();
 
-
     /**
      * Deletes a meeting
      * @param meetingRoom
      */
     void deleteMeetingRoom (MeetingRoom meetingRoom);
-
 
     /**
      * {@inheritDoc}

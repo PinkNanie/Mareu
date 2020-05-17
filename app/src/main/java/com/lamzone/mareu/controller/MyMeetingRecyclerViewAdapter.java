@@ -44,7 +44,6 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_meeting, parent, false);
         return new ViewHolder(view);
-
     }
 
     @Override
@@ -102,10 +101,5 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         return randomColorList[idx];
     }
 
-    public void setMeeting(List<Meeting> meetings){
-        this.mMeetings = meetings;
-        notifyDataSetChanged();
-
-    }
 
 }

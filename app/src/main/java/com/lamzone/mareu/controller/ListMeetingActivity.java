@@ -87,12 +87,12 @@ public class ListMeetingActivity extends AppCompatActivity implements TimePicker
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(ListMeetingActivity.this);
         View mView = getLayoutInflater().inflate(R.layout.spinner_filter_meetingroom, null);
         mBuilder.setTitle("Choisir une salle de réunion");
-        Spinner mSpinner = (Spinner) mView.findViewById(R.id.spinner_Filter);
+        Spinner mSpinner = mView.findViewById(R.id.spinner_Filter);
 
         ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, DummyMeetingRoomGenerator.DUMMY_MEETINGROOM);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
-        mSpinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        mSpinner.setOnItemSelectedListener(this);
 
         mBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
             @Override
@@ -114,8 +114,6 @@ public class ListMeetingActivity extends AppCompatActivity implements TimePicker
         mBuilder.setView(mView);
         AlertDialog dialog = mBuilder.create();
         dialog.show();
-
-
     }
 
     @Override
@@ -132,6 +130,4 @@ public class ListMeetingActivity extends AppCompatActivity implements TimePicker
         Intent addMeetingActivity = new Intent(ListMeetingActivity.this, AddMeetingActivity.class);
         startActivity(addMeetingActivity);
     }
-
-
 }
