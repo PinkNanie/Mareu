@@ -8,12 +8,14 @@ import java.util.List;
 public class Meeting {
 
     private String mHour;
+    private String mDate;
     private String mMeetingRoom;
     private String mSubject;
     private List<Participant> mParticipants;
 
-    public Meeting(String hour, String meetingRoom, String subject, List<Participant> participants) {
+    public Meeting(String hour, String date, String meetingRoom, String subject, List<Participant> participants) {
         this.mHour = hour;
+        this.mDate = date;
         this.mMeetingRoom = meetingRoom;
         this.mSubject = subject;
         this.mParticipants = participants;
@@ -51,11 +53,18 @@ public class Meeting {
         this.mParticipants = mParticipants;
     }
 
+    public String getDate() {
+        return mDate;
+    }
+
+    public void setDate(String date) {
+        mDate = date;
+    }
 
     @NonNull
     @Override
     public String toString() {
-        String result = mMeetingRoom + "-" +mHour + "-" + mSubject + "\n";
+        String result = mMeetingRoom + "-" + mHour + "-" + mSubject + "\n";
         for(Participant participant: mParticipants){
             result += participant.getEmail() + ", ";
         }

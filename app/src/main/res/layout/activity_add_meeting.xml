@@ -12,7 +12,7 @@
         android:layout_width="350dp"
         android:layout_height="40dp"
         android:layout_marginStart="28dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -20,16 +20,16 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="250dp"
+        android:layout_width="350dp"
         android:layout_height="80dp"
         android:layout_marginStart="28dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toTopOf="@+id/subject"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
+         <TextView
             android:id="@+id/time"
-            android:layout_width="match_parent"
+            android:layout_width="175dp"
             android:layout_height="40dp"
             android:hint="Horaire"
             android:textSize="30sp"
@@ -40,13 +40,35 @@
 
         <Button
             android:id="@+id/button_TP"
-            android:layout_width="match_parent"
+            android:layout_width="175dp"
             android:layout_height="40dp"
             android:layout_below="@+id/time"
-            android:layout_centerHorizontal="true"
-            android:text="Sélectionner l'heure"
+            android:layout_marginTop="0dp"
+            android:text="Heure"
             tools:layout_editor_absoluteX="68dp"
             tools:layout_editor_absoluteY="240dp">
+
+        </Button>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="175dp"
+            android:layout_height="40dp"
+            android:hint="Date"
+            android:textSize="30sp"
+            android:layout_toRightOf="@+id/time"
+            >
+
+        </TextView>
+
+        <Button
+            android:id="@+id/button_DP"
+            android:layout_width="175dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/date"
+            android:layout_marginTop="0dp"
+            android:text="Date"
+            android:layout_toRightOf="@+id/button_TP">
 
         </Button>
 
@@ -61,7 +83,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499">
+        app:layout_constraintVertical_bias="0.641">
 
     </EditText>
 
@@ -74,23 +96,21 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.665">
+        app:layout_constraintVertical_bias="0.779">
 
     </EditText>
-
-
 
     <Button
         android:id="@+id/add_Meeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="16dp"
         android:text="Ajouter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/participants"
-        app:layout_constraintVertical_bias="0.213" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

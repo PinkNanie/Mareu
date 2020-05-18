@@ -1,5 +1,6 @@
 package com.lamzone.mareu.controller;
 
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.Editable;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,8 +27,10 @@ import com.lamzone.mareu.service.DummyMeetingRoomGenerator;
 import com.lamzone.mareu.service.MeetingApiService;
 import com.lamzone.mareu.service.MeetingRoomApiService;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -34,7 +38,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class AddMeetingActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener , AdapterView.OnItemSelectedListener {
+public class AddMeetingActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener , AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener {
 
     @BindView(R.id.spinner)
     Spinner mSpinner;
@@ -48,6 +52,10 @@ public class AddMeetingActivity extends AppCompatActivity implements TimePickerD
     EditText mParticipants;
     @BindView(R.id.add_Meeting)
     Button mAddMeeting_btn;
+    @BindView(R.id.button_DP)
+    Button mButtonDP;
+    @BindView(R.id.date)
+    TextView mDate;
 
     private MeetingApiService mApiService;
     private MeetingRoomApiService mRoomApiServiceApiService = DummyMeetingRoomApiService.getInstance();
@@ -70,6 +78,14 @@ public class AddMeetingActivity extends AppCompatActivity implements TimePickerD
             public void onClick(View v) {
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(),"time picker");
+            }
+        });
+
+        mButtonDP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(),"date picker");
             }
         });
 
@@ -105,6 +121,17 @@ public class AddMeetingActivity extends AppCompatActivity implements TimePickerD
         mTime.setText(hourOfDay + "h"  + minute);
     }
 
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDateString = DateFormat.getDateInstance().format(c.getTime());
+        mDate.setText(currentDateString);
+
+    }
+
     @OnClick(R.id.add_Meeting)
     void addMeeting(){
         mParticipant = new Participant("");
@@ -118,10 +145,13 @@ public class AddMeetingActivity extends AppCompatActivity implements TimePickerD
 
         Meeting meeting = new Meeting (
                 mTime.getText().toString(),
+                mDate.getText().toString(),
                 mSpinner.getSelectedItem().toString(),
                 mSubject.getText().toString(),
                 participantMeetingList);
         mApiService.createMeeting(meeting);
         finish();
     }
+
+
 }

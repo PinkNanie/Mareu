@@ -1,6 +1,7 @@
 package com.lamzone.mareu.controller;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
@@ -25,13 +27,15 @@ import com.lamzone.mareu.service.DummyMeetingRoomGenerator;
 import com.lamzone.mareu.service.MeetingApiService;
 
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ListMeetingActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, AdapterView.OnItemSelectedListener {
+public class ListMeetingActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -64,9 +68,9 @@ public class ListMeetingActivity extends AppCompatActivity implements TimePicker
 
         switch (item.getItemId()) {
 
-            case R.id.filter_hour:
-                DialogFragment timePicker = new TimePickerFragment();
-                timePicker.show(getSupportFragmentManager(),"time picker");
+            case R.id.filter_date:
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(),"date picker");
                 return true;
             case R.id.filter_meetingRoom:
                 spinnerFilterMeetingRoom();
@@ -76,9 +80,15 @@ public class ListMeetingActivity extends AppCompatActivity implements TimePicker
         }
     }
 
+
     @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-        List<Meeting> meetings = mApiService.filterByHour(hourOfDay + "h" + minute);
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDateString = DateFormat.getDateInstance().format(c.getTime());
+        List<Meeting> meetings = mApiService.filterByDate(currentDateString);
         MeetingListFragment f = (MeetingListFragment) getSupportFragmentManager().getFragments().get(0);
         f.setMeetingList(meetings);
     }

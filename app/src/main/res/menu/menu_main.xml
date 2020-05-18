@@ -13,8 +13,8 @@
         <menu>
 
             <item
-                android:id="@+id/filter_hour"
-                android:title=" Filtrer / Heures"
+                android:id="@+id/filter_date"
+                android:title=" Filtrer / Dates"
                 app:showAsAction="never" />
 
 

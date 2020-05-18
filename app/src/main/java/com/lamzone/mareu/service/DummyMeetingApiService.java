@@ -69,12 +69,12 @@ public class DummyMeetingApiService implements MeetingApiService {
     }
 
     @Override
-    public List<Meeting> filterByHour(String hour) {
+    public List<Meeting> filterByDate(String date) {
 
         List<Meeting> result = new ArrayList<>();
 
         for (Meeting meeting : meetings) {
-            if (meeting.getHour().equals(hour)) {
+            if (meeting.getDate().equals(date)) {
                 result.add(meeting);
             }
         }

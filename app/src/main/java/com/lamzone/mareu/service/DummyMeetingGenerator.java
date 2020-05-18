@@ -11,9 +11,9 @@ public abstract class DummyMeetingGenerator {
 
     public static List<Meeting> DUMMY_MEETING = Arrays.asList(
 
-            new Meeting("14h0", "Réunion A", "Peach", Arrays.asList(new Participant("maxime@lamzone.com"),new Participant("alex@lamzone.com"))),
-            new Meeting("16h0", "Réunion B", "Mario", Arrays.asList(new Participant("paul@lamzone.com"),new Participant("viviane@lamzone.com"))),
-            new Meeting("19h0", "Réunion C", "Luigi", Arrays.asList(new Participant("amandine@lamzone.com"),new Participant("luc@lamzone.com")))
+            new Meeting("14h0","15 mai 2020" ,"Réunion A", "Peach", Arrays.asList(new Participant("maxime@lamzone.com"),new Participant("alex@lamzone.com"))),
+            new Meeting("16h0","15 mai 2020" ,"Réunion B", "Mario", Arrays.asList(new Participant("paul@lamzone.com"),new Participant("viviane@lamzone.com"))),
+            new Meeting("19h0","15 mai 2020","Réunion C", "Luigi", Arrays.asList(new Participant("amandine@lamzone.com"),new Participant("luc@lamzone.com")))
     );
 
     static List<Meeting> generateMeeting(){

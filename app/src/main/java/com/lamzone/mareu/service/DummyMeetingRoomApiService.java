@@ -16,6 +16,7 @@ public class DummyMeetingRoomApiService implements MeetingRoomApiService {
         return singleton;
     }
 
+
     private List<MeetingRoom> meetingRooms = DummyMeetingRoomGenerator.generateMeetingRoom();
 
     /**
