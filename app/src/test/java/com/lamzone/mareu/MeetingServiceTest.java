@@ -45,22 +45,22 @@ public class MeetingServiceTest {
     }
 
     @Test
-    public void filterByHourWithSuccess(){
+    public void filterByDateWithSuccess(){
         List<Meeting> meetings = service.getMeeting();
         meetings.clear();
-        meetings.add(new Meeting("14H0","","",null));
-        meetings.add(new Meeting("16H0","","",null));
-        List<Meeting> filteredHourMeeting = service.filterByHour("14H0");
-        assertTrue(filteredHourMeeting.size()==1);
-        assertTrue(filteredHourMeeting.get(0).getHour().equals("14H0"));
+        meetings.add(new Meeting("14H0","15 mai 2020","","",null));
+        meetings.add(new Meeting("16H0","18 mai 2020","","",null));
+        List<Meeting> filteredDateMeeting = service.filterByDate("15 mai 2020");
+        assertEquals(1, filteredDateMeeting.size());
+        assertTrue(filteredDateMeeting.get(0).getDate().equals("15 mai 2020"));
     }
 
     @Test
     public void filterByMeetingRoomWithSuccess() {
         List<Meeting> meetings = service.getMeeting();
         meetings.clear();
-        meetings.add(new Meeting("","A","",null));
-        meetings.add(new Meeting("","B","",null));
+        meetings.add(new Meeting("","","A","",null));
+        meetings.add(new Meeting("","","B","",null));
         List<Meeting> filteredMeetings = service.filterByMeetingRoom("A");
         assertTrue(filteredMeetings.size()== 1);
         assertTrue(filteredMeetings.get(0).getLocation().equals("A"));
