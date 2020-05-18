@@ -48,10 +48,10 @@ public class MeetingServiceTest {
     public void filterByDateWithSuccess(){
         List<Meeting> meetings = service.getMeeting();
         meetings.clear();
-        meetings.add(new Meeting("14H0","15 mai 2020","","",null));
-        meetings.add(new Meeting("16H0","18 mai 2020","","",null));
+        meetings.add(new Meeting("","15 mai 2020","","",null));
+        meetings.add(new Meeting("","16 mai 2020","","",null));
         List<Meeting> filteredDateMeeting = service.filterByDate("15 mai 2020");
-        assertEquals(1, filteredDateMeeting.size());
+        assertTrue(filteredDateMeeting.size()==1);
         assertTrue(filteredDateMeeting.get(0).getDate().equals("15 mai 2020"));
     }
 
