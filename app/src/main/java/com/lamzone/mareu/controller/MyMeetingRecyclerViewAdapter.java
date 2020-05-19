@@ -51,7 +51,7 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
 
         Meeting meeting = mMeetings.get(position);
         holder.mMeetingName.setText(meeting + "");
-        holder.mParticipantView.setText(meeting.participantsToString());
+        holder.mParticipantView.setText(meeting.participantsToString()+ "");
         Glide.with(holder.mCirclemeeting.getContext())
                 .load(getRandomColorDrawable())
                 .apply(RequestOptions.circleCropTransform())

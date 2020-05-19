@@ -16,27 +16,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/item_list_meetingName"
+        style="@style/AppTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        style="@style/AppTheme"
+        android:layout_marginBottom="20dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_list_meeting"
         app:layout_constraintStart_toEndOf="@+id/item_list_meeting"
-        app:layout_constraintTop_toTopOf="@+id/item_list_meeting" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/item_list_participant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_list_meeting"
         app:layout_constraintStart_toEndOf="@+id/item_list_meeting"
-        app:layout_constraintTop_toTopOf="@+id/item_list_meeting"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/item_list_meetingName" />
 
     <ImageButton
         android:id="@+id/delete_btn"
@@ -46,7 +46,7 @@
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="@+id/item_list_meetingName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/item_list_meetingName"
+        app:layout_constraintTop_toTopOf="@+id/item_list_participant"
         app:srcCompat="@drawable/ic_delete_black_24dp"/>
 
 
