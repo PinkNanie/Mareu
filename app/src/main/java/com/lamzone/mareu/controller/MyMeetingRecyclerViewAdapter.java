@@ -32,7 +32,7 @@ import butterknife.OnClick;
 public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingRecyclerViewAdapter.ViewHolder> {
 
     private  List<Meeting> mMeetings;
-    private  Participant mParticipants;
+
 
     public MyMeetingRecyclerViewAdapter(List<Meeting> items) {
         mMeetings = items;

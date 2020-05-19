@@ -77,9 +77,9 @@ public class Meeting {
     public String participantsToString (){
         String result = "";
         for (Participant participant: mParticipants ){
-            result += " " + participant.getEmail() + "," ;
+            result += participant.getEmail() + ", " ;
         }
-        return result.substring(1,result.length()-2);
+        return result.substring(0,result.length()-2);
     }
 }
 
