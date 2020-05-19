@@ -1,6 +1,12 @@
 package com.lamzone.mareu.model;
 
 
+import android.graphics.Typeface;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
+
 import androidx.annotation.NonNull;
 
 import java.util.List;
@@ -65,9 +71,16 @@ public class Meeting {
     @Override
     public String toString() {
         String result = mMeetingRoom + "-" + mHour + "-" + mSubject + "\n";
-        for(Participant participant: mParticipants){
-            result += participant.getEmail() + ", ";
+          return String.format(result);
+    }
+
+    public String participantsToString (){
+        String result = "";
+        for (Participant participant: mParticipants ){
+            result = participant.getEmail() + ",";
         }
         return result.substring(0,result.length()-2);
     }
 }
+
+

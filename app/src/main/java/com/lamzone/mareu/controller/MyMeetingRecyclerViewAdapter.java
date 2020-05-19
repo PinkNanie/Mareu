@@ -32,7 +32,7 @@ import butterknife.OnClick;
 public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingRecyclerViewAdapter.ViewHolder> {
 
     private  List<Meeting> mMeetings;
-
+    private  Participant mParticipants;
 
     public MyMeetingRecyclerViewAdapter(List<Meeting> items) {
         mMeetings = items;
@@ -51,6 +51,7 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
 
         Meeting meeting = mMeetings.get(position);
         holder.mMeetingName.setText(meeting + "");
+        holder.mParticipantView.setText(meeting.participantsToString());
         Glide.with(holder.mCirclemeeting.getContext())
                 .load(getRandomColorDrawable())
                 .apply(RequestOptions.circleCropTransform())
@@ -76,6 +77,8 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         public ImageView mCirclemeeting;
         @BindView(R.id.item_list_meetingName)
         public TextView mMeetingName;
+        @BindView(R.id.item_list_participant)
+        public TextView mParticipantView;
         @BindView(R.id.delete_btn)
         public ImageButton mDelete_btn;
 
@@ -100,6 +103,7 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         int idx = new Random().nextInt(randomColorList.length);
         return randomColorList[idx];
     }
+
 
 
 }

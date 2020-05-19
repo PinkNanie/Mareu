@@ -26,6 +26,18 @@
         app:layout_constraintStart_toEndOf="@+id/item_list_meeting"
         app:layout_constraintTop_toTopOf="@+id/item_list_meeting" />
 
+
+    <TextView
+        android:id="@+id/item_list_participant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_list_meeting"
+        app:layout_constraintStart_toEndOf="@+id/item_list_meeting"
+        app:layout_constraintTop_toTopOf="@+id/item_list_meeting"
+         />
+
     <ImageButton
         android:id="@+id/delete_btn"
         android:layout_width="wrap_content"
