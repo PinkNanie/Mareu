@@ -1,6 +1,5 @@
 package com.lamzone.mareu.model;
 
-import androidx.annotation.NonNull;
 
 public class Participant {
 

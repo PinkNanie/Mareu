@@ -2,7 +2,7 @@ package com.lamzone.mareu.controller;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Spinner;
-import android.widget.TimePicker;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.lamzone.mareu.R;
@@ -41,7 +42,7 @@ public class ListMeetingActivity extends AppCompatActivity implements DatePicker
     Toolbar mToolbar;
 
     private MeetingApiService mApiService;
-    private MyMeetingRecyclerViewAdapter mAdapter;
+
 
 
     @Override
@@ -72,9 +73,17 @@ public class ListMeetingActivity extends AppCompatActivity implements DatePicker
                 DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getSupportFragmentManager(),"date picker");
                 return true;
+
             case R.id.filter_meetingRoom:
                 spinnerFilterMeetingRoom();
                 return true;
+
+            case R.id.no_filter:
+                List<Meeting> meetings = mApiService.getMeeting();
+                MeetingListFragment f = (MeetingListFragment) getSupportFragmentManager().getFragments().get(0);
+                f.setMeetingList(meetings);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -1,12 +1,5 @@
 package com.lamzone.mareu.model;
 
-
-import android.graphics.Typeface;
-import android.text.Html;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.StyleSpan;
-
 import androidx.annotation.NonNull;
 
 import java.util.List;

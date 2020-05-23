@@ -68,6 +68,7 @@ public class DummyMeetingApiService implements MeetingApiService {
         return result;
     }
 
+
     @Override
     public List<Meeting> filterByDate(String date) {
 
@@ -80,4 +81,5 @@ public class DummyMeetingApiService implements MeetingApiService {
         }
         return result;
     }
+
 }

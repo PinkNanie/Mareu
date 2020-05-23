@@ -142,7 +142,6 @@ public class AddMeetingActivity extends AppCompatActivity implements TimePickerD
             Participant participant= new Participant(string);
             participantMeetingList.add(participant);
         }
-
         Meeting meeting = new Meeting (
                 mTime.getText().toString(),
                 mDate.getText().toString(),

@@ -41,7 +41,7 @@ public class MeetingListFragment extends Fragment {
 
     public MeetingListFragment() {
         // Required empty public constructor
-    }
+        }
 
 
     public static MeetingListFragment newInstance() {
